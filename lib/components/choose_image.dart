@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 
 Widget bottomSheet(controller, context) {
   return Container(
-    height: double.infinity,
+    height: 100.0,
     width: double.infinity,
     margin: const EdgeInsets.symmetric(
       horizontal: 20,
