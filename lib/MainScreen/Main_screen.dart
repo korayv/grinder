@@ -9,12 +9,20 @@ import 'package:url_launcher/url_launcher.dart';
 final Uri _url = Uri.parse('https://foundation.app/@philipglass/BM-ICONS/1');
 final Uri _url2 = Uri.parse('https://foundation.app/@Timpers/foundation/28521');
 final Uri _url3 = Uri.parse('https://foundation.app/@GHARLIERA/genesis-74ef/1');
+final Uri _url5 =
+    Uri.parse('https://www.fotor.com/photo-editor-app/editor/sticker');
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MyAppState();
+}
+
+Future<void> _launchUrl5() async {
+  if (!await launchUrl(_url5)) {
+    throw 'Could not launch $_url5';
+  }
 }
 
 Future<void> _launchUrl() async {
@@ -311,9 +319,7 @@ class _MyAppState extends State<MainScreen> {
                           Padding(
                             padding: const EdgeInsets.all(5),
                             child: GestureDetector(
-                              onTap: () {
-                                print("another box");
-                              },
+                              onTap: _launchUrl5,
                               child: Stack(
                                 alignment: Alignment.bottomLeft,
                                 children: [
@@ -337,7 +343,7 @@ class _MyAppState extends State<MainScreen> {
                                   const Padding(
                                     padding: EdgeInsets.all(5),
                                     child: Text(
-                                      "Another box",
+                                      "Add Background",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
