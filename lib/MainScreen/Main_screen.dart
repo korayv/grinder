@@ -74,14 +74,12 @@ class _MyAppState extends State<MainScreen> {
                                     dense: true,
                                     title: Text("Rate Us"),
                                     leading: Icon(Icons.star_border_outlined),
-                                    onTap: () => Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return RateUs();
-                                        },
-                                      ),
-                                    ),
+                                    onTap: () => Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                RateUs()),
+                                        (r) => false),
                                   ),
                                   ListTile(
                                     dense: true,
