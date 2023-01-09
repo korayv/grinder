@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
-import 'package:sa/Design/app-colors.dart';
-import 'package:sa/Design/app-theme-data.dart';
+import 'package:sa/Drawer/rate_us.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -76,9 +74,14 @@ class _MyAppState extends State<MainScreen> {
                                     dense: true,
                                     title: Text("Rate Us"),
                                     leading: Icon(Icons.star_border_outlined),
-                                    onTap: () {
-                                      //action when this menu is pressed
-                                    },
+                                    onTap: () => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return RateUs();
+                                        },
+                                      ),
+                                    ),
                                   ),
                                   ListTile(
                                     dense: true,
