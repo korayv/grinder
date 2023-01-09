@@ -7,14 +7,8 @@ class IntroScreenOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.grey[50],
@@ -27,14 +21,14 @@ class IntroScreenOne extends StatelessWidget {
                   bottom: 2,
                 ),
                 child: SizedBox(
-                  height: 450,
+                  height: width,
                   width: double.infinity,
                   child: Image.asset('lib/images/a.jpg'),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(30.0),
                 child: Text(
                   'Welcome to the next generation!',
                   textAlign: TextAlign.center,
@@ -45,35 +39,34 @@ class IntroScreenOne extends StatelessWidget {
                 ),
               ),
 
-               Text(
+              Text(
                 'Generate 1000+ NFTs in seconds without code',
-                 textAlign: TextAlign.center,
-                 style: GoogleFonts.arimo(
-                     fontSize: 14,
-                     fontWeight: FontWeight.bold,
-                     color: Color(0xFFFD7650)),
-               ),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.arimo(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFFD7650)),
+              ),
 
-
-              const SizedBox(height: 24),
+              const SizedBox(height: 30),
 
               // get started button
               Container(
-                padding: EdgeInsets.only(right: 23, bottom: 15),
                 alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(right: 30, top: 120),
                 child: GestureDetector(
-                  onTap: () =>
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return IntroScreenTwo();
-                          },
-                        ),
-                      ),
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return IntroScreenTwo();
+                      },
+                    ),
+                  ),
                   child: Container(
+                    alignment: Alignment.center,
                     width: 120,
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueAccent, width: 1),
                       borderRadius: BorderRadius.circular(8),

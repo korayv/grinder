@@ -7,14 +7,8 @@ class IntroScreenThree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.grey[50],
@@ -25,12 +19,15 @@ class IntroScreenThree extends StatelessWidget {
               // big logo
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 2,
+                  bottom: 30,
                 ),
                 child: Container(
-                  height: 450,
+                  height: width,
                   width: double.infinity,
-                  child: Image.asset('lib/images/c.jpg'),
+                  child: Image.asset(
+                    'lib/images/c.jpg',
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
 
@@ -40,10 +37,10 @@ class IntroScreenThree extends StatelessWidget {
                 child: Text(
                   'Share your NFTs with stickers on social media.',
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.notoSerif(
-                      fontSize: 25,
+                  style: GoogleFonts.arimo(
+                      fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blueAccent),
+                      color: Color(0xFF247BA0)),
                 ),
               ),
 
@@ -51,10 +48,10 @@ class IntroScreenThree extends StatelessWidget {
               Text(
                 'Enjoy and discover the possibility of metaverse.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.deepOrange,
-                ),
+                style: GoogleFonts.arimo(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFFD7650)),
               ),
 
               const SizedBox(height: 24),
@@ -62,17 +59,16 @@ class IntroScreenThree extends StatelessWidget {
               // get started button
               Container(
                 alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 23, bottom: 15),
+                padding: EdgeInsets.only(right: 30, top: 120),
                 child: GestureDetector(
-                  onTap: () =>
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return MainScreen();
-                          },
-                        ),
-                      ),
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MainScreen();
+                      },
+                    ),
+                  ),
                   child: Container(
                     width: 120,
                     padding: const EdgeInsets.all(16),

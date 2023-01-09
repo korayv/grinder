@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
 import 'package:sa/Design/app-colors.dart';
 import 'package:sa/Design/app-theme-data.dart';
+import 'package:sa/views/remove_bg_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri _url = Uri.parse('https://foundation.app/@philipglass/BM-ICONS/1');
+final Uri _url2 = Uri.parse('https://foundation.app/@Timpers/foundation/28521');
+final Uri _url3 = Uri.parse('https://foundation.app/@GHARLIERA/genesis-74ef/1');
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -9,40 +17,183 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MyAppState();
 }
 
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
+  }
+}
+
+Future<void> _launchUrl2() async {
+  if (!await launchUrl(_url2)) {
+    throw 'Could not launch $_url2';
+  }
+}
+
+Future<void> _launchUrl3() async {
+  if (!await launchUrl(_url3)) {
+    throw 'Could not launch $_url3';
+  }
+}
+
 class _MyAppState extends State<MainScreen> {
   final List<Map> myProducts =
-  List.generate(4, (index) => {"id": index, "name": "Product $index"})
-      .toList();
-
+      List.generate(4, (index) => {"id": index, "name": "Product $index"})
+          .toList();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: const Text(
-          "Grinder",
-          style: TextStyle(color: Colors.black),
-        ),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
+      key: scaffoldKey,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0), // here the desired height
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Drawer(
+                              child: SafeArea(
+                                  child: Column(
+                                children: [
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Rate Us"),
+                                    leading: Icon(Icons.star_border_outlined),
+                                    onTap: () {
+                                      //action when this menu is pressed
+                                    },
+                                  ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Privacy Policy"),
+                                    leading: Icon(Icons.privacy_tip_outlined),
+                                    onTap: () {
+                                      //action when this menu is pressed
+                                    },
+                                  ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Terms of Use"),
+                                    leading: Icon(Icons.article_outlined),
+                                    onTap: () {
+                                      //action when this menu is pressed
+                                    },
+                                  ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Follow Us"),
+                                    leading: Icon(Icons.thumb_up_alt_outlined),
+                                    onTap: () {
+                                      //action when this menu is pressed
+                                    },
+                                  ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Go Back"),
+                                    leading:
+                                        Icon(Icons.arrow_back_ios_outlined),
+                                    onTap: () => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return MainScreen();
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                            );
+                          },
+                        ),
+                      ),
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Colors.black,
+                  )),
+              Flexible(
+                child: Card(
+                  child: Image.asset(
+                    'assets/Untitled-1.png',
+                    fit: BoxFit.fitHeight,
+                    height: 50,
+                    width: height,
+                  ),
+                ),
               ),
-            );
-          },
+              IconButton(
+                  onPressed: () => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Drawer(
+                              child: SafeArea(
+                                  child: Column(
+                                children: [
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Home Page"),
+                                    leading: Icon(Icons.home),
+                                    onTap: () {
+                                      //action when this menu is pressed
+                                    },
+                                  ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("My Profile"),
+                                    leading: Icon(Icons.person),
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const ProfileScreen(),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Get Premium"),
+                                    leading: Icon(Icons.workspace_premium),
+                                    onTap: () {
+                                      //action when this menu is pressed
+                                    },
+                                  ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Go Back"),
+                                    leading:
+                                        Icon(Icons.arrow_back_ios_outlined),
+                                    onTap: () => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return MainScreen();
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                            );
+                          },
+                        ),
+                      ),
+                  icon: Icon(
+                    Icons.workspace_premium_outlined,
+                    color: Colors.black,
+                  ))
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -50,313 +201,540 @@ class _MyAppState extends State<MainScreen> {
           mainAxisSize: MainAxisSize.max,
           children: [
             SafeArea(
-              child: SizedBox(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          "Your Creativy",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
+                child: SizedBox(
+                    child: SingleChildScrollView(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10, left: 10),
+                      child: Text(
+                        "Start Creating",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: GestureDetector(
+                              onTap: () {
+                                print("sticker");
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return CreateScreen();
+                                        },
+                                      ),
+                                    ),
+                                    child: Container(
+                                      foregroundDecoration: const BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.white,
+                                            Colors.transparent,
+                                          ],
+                                          begin: Alignment.bottomCenter,
+                                          end: Alignment.topCenter,
+                                          stops: [0, 0.5],
+                                        ),
+                                      ),
+                                      height: 195,
+                                      width: 195,
+                                      child: Image.asset("assets/sticker.jpg"),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Text(
+                                      "Sticker",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: GestureDetector(
+                              onTap: () => Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return RemoveBackroundScreen();
+                                  },
+                                ),
+                              ),
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    height: 195,
+                                    width: 195,
+                                    foregroundDecoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.white,
+                                          Colors.transparent,
+                                        ],
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter,
+                                        stops: [0, 0.5],
+                                      ),
+                                    ),
+                                    child: Image.asset(
+                                        "assets/remove-background-sss.jpg"),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Text(
+                                      "Background Remove",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: GestureDetector(
+                              onTap: () {
+                                print("another box");
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    height: 199,
+                                    width: 199,
+                                    foregroundDecoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.white,
+                                          Colors.transparent,
+                                        ],
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter,
+                                        stops: [0, 0.5],
+                                      ),
+                                    ),
+                                    child: Image.network(
+                                        "https://nftnewspro.com/wp-content/uploads/2022/02/Ethernal-Blue-NFT-Art.jpg"),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Text(
+                                      "Another box",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10, top: 10),
+                      child: Text(
+                        "More",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const NFTScreen(),
+                                  ),
+                                );
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    foregroundDecoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                          colors: [
+                                            Colors.white,
+                                            Colors.transparent,
+                                          ],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          stops: [0, 0.5],
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    height: 150,
+                                    width: 150,
+                                    child: Image.network(
+                                      "https://www.cnet.com/a/img/resize/e547a2e4388fcc5ab560f821ac170a59b9fb0143/hub/2021/12/13/d319cda7-1ddd-4855-ac55-9dcd9ce0f6eb/unnamed.png?auto=webp&fit=crop&height=1200&width=1200",
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.5),
+                                        borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(10),
+                                            bottomRight: Radius.circular(10))),
+                                    width: 150,
+                                    height: 30,
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(
+                                      "What is NFT?",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const OpenWalletScreen(),
+                                  ),
+                                );
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    foregroundDecoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                          colors: [
+                                            Colors.white,
+                                            Colors.transparent,
+                                          ],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          stops: [0, 0.5],
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    height: 150,
+                                    width: 150,
+                                    child: Image.network(
+                                        "https://img.freepik.com/free-vector/digital-wallet-abstract-concept-illustration_335657-3896.jpg?w=2000"),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.5),
+                                        borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(10),
+                                            bottomRight: Radius.circular(10))),
+                                    width: 150,
+                                    height: 30,
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(
+                                      "Open a wallet",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 5),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const NFTScreen(),
+                                  ),
+                                );
+                              },
+                              child: Stack(
+                                alignment: Alignment.bottomLeft,
+                                children: [
+                                  Container(
+                                    foregroundDecoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                          colors: [
+                                            Colors.white,
+                                            Colors.transparent,
+                                          ],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          stops: [0, 0.5],
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    height: 150,
+                                    width: 150,
+                                    child: Image.asset("assets/aboutus.jpg"),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.5),
+                                        borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(10),
+                                            bottomRight: Radius.circular(10))),
+                                    width: 150,
+                                    height: 30,
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text(
+                                      "About Us",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 265,
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: GestureDetector(
-                                onTap: () {
-                                  print("sticker");
-                                },
-                                child: Stack(
-                                  alignment: Alignment.bottomLeft,
-                                  children: [
-                                    Container(
-                                      foregroundDecoration: const BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Colors.white,
-                                            Colors.transparent,
-                                          ],
-                                          begin: Alignment.bottomCenter,
-                                          end: Alignment.topCenter,
-                                          stops: [0, 0.5],
+                            SafeArea(
+                              child: SizedBox(
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.only(top: 10, left: 10),
+                                        child: Text(
+                                          "Trending",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20),
                                         ),
                                       ),
-                                      height: 100,
-                                      width: 200,
-                                      child: Image.network(
-                                          "https://alumni.arizona.edu/sites/default/files/styles/az_large/public/2022-07/is_your_idea_innovative.jpeg"),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: Text(
-                                        "Sticker",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: GestureDetector(
-                                onTap: () {
-                                  print("background remove");
-                                },
-                                child: Stack(
-                                  alignment: Alignment.bottomLeft,
-                                  children: [
-                                    Container(
-                                      height: 100,
-                                      width: 200,
-                                      foregroundDecoration: const BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Colors.white,
-                                            Colors.transparent,
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(5),
+                                              child: GestureDetector(
+                                                onTap: _launchUrl,
+                                                child: Stack(
+                                                  alignment:
+                                                      Alignment.bottomLeft,
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: _launchUrl,
+                                                      child: Container(
+                                                        foregroundDecoration:
+                                                            const BoxDecoration(
+                                                          gradient:
+                                                              LinearGradient(
+                                                            colors: [
+                                                              Colors.white,
+                                                              Colors
+                                                                  .transparent,
+                                                            ],
+                                                            begin: Alignment
+                                                                .bottomCenter,
+                                                            end: Alignment
+                                                                .topCenter,
+                                                            stops: [0, 0.5],
+                                                          ),
+                                                        ),
+                                                        height: 195,
+                                                        width: 195,
+                                                        child: Image.network(
+                                                            "https://nftnewspro.com/wp-content/uploads/2022/04/Einstein-on-the-Beach-NFT-Trend.jpg"),
+                                                      ),
+                                                    ),
+                                                    const Padding(
+                                                      padding:
+                                                          EdgeInsets.all(5),
+                                                      child: Text(
+                                                        "Einstein on the Beach",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(5),
+                                              child: GestureDetector(
+                                                onTap: _launchUrl2,
+                                                child: Stack(
+                                                  alignment:
+                                                      Alignment.bottomLeft,
+                                                  children: [
+                                                    Container(
+                                                      height: 195,
+                                                      width: 195,
+                                                      foregroundDecoration:
+                                                          const BoxDecoration(
+                                                        gradient:
+                                                            LinearGradient(
+                                                          colors: [
+                                                            Colors.white,
+                                                            Colors.transparent,
+                                                          ],
+                                                          begin: Alignment
+                                                              .bottomCenter,
+                                                          end: Alignment
+                                                              .topCenter,
+                                                          stops: [0, 0.5],
+                                                        ),
+                                                      ),
+                                                      child: Image.network(
+                                                          "https://nftnewspro.com/wp-content/uploads/2022/05/web-trending-NFT.jpg"),
+                                                    ),
+                                                    const Padding(
+                                                      padding:
+                                                          EdgeInsets.all(5),
+                                                      child: Text(
+                                                        "WEB",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(5),
+                                              child: GestureDetector(
+                                                onTap: _launchUrl3,
+                                                child: Stack(
+                                                  alignment:
+                                                      Alignment.bottomLeft,
+                                                  children: [
+                                                    Container(
+                                                      height: 199,
+                                                      width: 199,
+                                                      foregroundDecoration:
+                                                          const BoxDecoration(
+                                                        gradient:
+                                                            LinearGradient(
+                                                          colors: [
+                                                            Colors.white,
+                                                            Colors.transparent,
+                                                          ],
+                                                          begin: Alignment
+                                                              .bottomCenter,
+                                                          end: Alignment
+                                                              .topCenter,
+                                                          stops: [0, 0.5],
+                                                        ),
+                                                      ),
+                                                      child: Image.network(
+                                                          "https://nftnewspro.com/wp-content/uploads/2022/03/GENE_SIS.jpg"),
+                                                    ),
+                                                    const Padding(
+                                                      padding:
+                                                          EdgeInsets.all(5),
+                                                      child: Text(
+                                                        "GENE_SIS",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
                                           ],
-                                          begin: Alignment.bottomCenter,
-                                          end: Alignment.topCenter,
-                                          stops: [0, 0.5],
                                         ),
                                       ),
-                                      child: Image.network(
-                                          "https://alumni.arizona.edu/sites/default/files/styles/az_large/public/2022-07/is_your_idea_innovative.jpeg"),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: Text(
-                                        "Background Remove",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: GestureDetector(
-                                onTap: () {
-                                  print("another box");
-                                },
-                                child: Stack(
-                                  alignment: Alignment.bottomLeft,
-                                  children: [
-                                    Container(
-                                      height: 100,
-                                      width: 200,
-                                      foregroundDecoration: const BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Colors.white,
-                                            Colors.transparent,
+                                      SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 5),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const NFTScreen(),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Stack(
+                                                  alignment:
+                                                      Alignment.bottomLeft,
+                                                ),
+                                              ),
+                                            ),
                                           ],
-                                          begin: Alignment.bottomCenter,
-                                          end: Alignment.topCenter,
-                                          stops: [0, 0.5],
                                         ),
                                       ),
-                                      child: Image.network(
-                                          "https://alumni.arizona.edu/sites/default/files/styles/az_large/public/2022-07/is_your_idea_innovative.jpeg"),
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: Text(
-                                        "Another box",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    )
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
+                            )
                           ],
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          "Learn from GriNder Academy",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => const NFTScreen(),
-                                    ),
-                                  );
-                                },
-                                child: Stack(
-                                  alignment: Alignment.bottomLeft,
-                                  children: [
-                                    Container(
-                                      foregroundDecoration: BoxDecoration(
-                                          gradient: const LinearGradient(
-                                            colors: [
-                                              Colors.white,
-                                              Colors.transparent,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                            stops: [0, 0.5],
-                                          ),
-                                          borderRadius:
-                                          BorderRadius.circular(10)),
-                                      height: 100,
-                                      width: 150,
-                                      child: Image.network(
-                                          "https://www.womansworld.com/wp-content/uploads/2019/09/cute-bunny-in-a-field-of-grass-and-white-flowers.jpg"),
-                                    ),
-                                    Container(
-                                      decoration: const BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(10),
-                                              bottomRight:
-                                              Radius.circular(10))),
-                                      width: 150,
-                                      height: 30,
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(10),
-                                      child: Text(
-                                        "What is NFT?",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                      const OpenWalletScreen(),
-                                    ),
-                                  );
-                                },
-                                child: Stack(
-                                  alignment: Alignment.bottomLeft,
-                                  children: [
-                                    Container(
-                                      foregroundDecoration: BoxDecoration(
-                                          gradient: const LinearGradient(
-                                            colors: [
-                                              Colors.white,
-                                              Colors.transparent,
-                                            ],
-                                            begin: Alignment.topCenter,
-                                            end: Alignment.bottomCenter,
-                                            stops: [0, 0.5],
-                                          ),
-                                          borderRadius:
-                                          BorderRadius.circular(10)),
-                                      height: 100,
-                                      width: 150,
-                                      child: Image.network(
-                                          "https://www.womansworld.com/wp-content/uploads/2019/09/cute-bunny-in-a-field-of-grass-and-white-flowers.jpg"),
-                                    ),
-                                    Container(
-                                      decoration: const BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(10),
-                                              bottomRight:
-                                              Radius.circular(10))),
-                                      width: 150,
-                                      height: 30,
-                                    ),
-                                    const Padding(
-                                      padding: EdgeInsets.all(10),
-                                      child: Text(
-                                        "Open a wallet",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          "Trend Collections",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 300,
-                        width: double.infinity,
-                        child: GridView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            gridDelegate:
-                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                                maxCrossAxisExtent: 200,
-                                childAspectRatio: 3 / 2,
-                                crossAxisSpacing: 6,
-                                mainAxisSpacing: 10),
-                            itemCount: myProducts.length,
-                            itemBuilder: (BuildContext ctx, index) {
-                              return Padding(
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 10),
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      color: Colors.amber,
-                                      borderRadius: BorderRadius.circular(15)),
-                                  child: Text(myProducts[index]["name"]),
-                                ),
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+                    ),
+                  ]),
+            )))
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return CreateScreen();
-                },
-              ),
-            ),
+        onPressed: () => Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return CreateScreen();
+            },
+          ),
+        ),
         child: Icon(Icons.add),
         elevation: 2.0,
       ),
@@ -369,7 +747,7 @@ class _MyAppState extends State<MainScreen> {
             BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               currentIndex: 0,
-              onTap: (int index) {},
+              onTap: (value) => ProfileScreen(),
               items: [
                 BottomNavigationBarItem(
                     icon: Icon(
@@ -385,6 +763,231 @@ class _MyAppState extends State<MainScreen> {
                     label: 'Profile'),
               ],
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Profile',
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          elevation: 0,
+          title: Center(
+            child: const Text('Profile'),
+          ),
+        ),
+        body: ListView(
+          children: <Widget>[
+            Container(
+              height: 250,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 37, 36, 36),
+                    Color.fromARGB(255, 3, 2, 2)
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [0.5, 0.9],
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundColor: Colors.white70,
+                        minRadius: 35.0,
+                        child: Icon(
+                          Icons.call,
+                          size: 30.0,
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white70,
+                        minRadius: 60.0,
+                        child: CircleAvatar(
+                          radius: 50.0,
+                          backgroundImage: NetworkImage(
+                              'https://pbs.twimg.com/profile_images/1610330801970757632/DZakeY5__400x400.jpg'),
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white70,
+                        minRadius: 35.0,
+                        child: Icon(
+                          Icons.message,
+                          size: 30.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Rıfat KURBAN',
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    'Flutter Developer',
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.white,
+                      fontSize: 22,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      color: Color.fromARGB(255, 52, 52, 52),
+                      child: ListTile(
+                        title: Text(
+                          'Jan 16, 23',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Since',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      color: Color.fromARGB(255, 22, 22, 22),
+                      child: ListTile(
+                        title: Text(
+                          '235',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
+                        ),
+                        subtitle: Text(
+                          'NFT Created',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    title: Text(
+                      'Email',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 8, 70, 136),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'rifat.kurban@agu.edu.tr',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  Divider(),
+                  ListTile(
+                    title: Text(
+                      'Avesis',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 8, 70, 136),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'https://avesis.kayseri.edu.tr/rifatkurban',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  Divider(),
+                  ListTile(
+                    title: Text(
+                      'Linkedin',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 8, 70, 136),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      'https://www.linkedin.com/in/rifatkurban/?originalSubdomain=tr',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                  Container(height: 150),
+                  FloatingActionButton(
+                    backgroundColor: Colors.black,
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MainScreen();
+                        },
+                      ),
+                    ),
+                    child: Icon(
+                      Icons.arrow_back_ios_new,
+                    ),
+                    elevation: 2.0,
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -490,4 +1093,45 @@ class _NFTScreenState extends State<NFTScreen> {
       ),
     );
   }
+}
+
+class Product with ChangeNotifier {
+  final String id;
+  final String title;
+  final String imageUrl;
+
+  Product({
+    required this.id,
+    required this.title,
+    required this.imageUrl,
+  });
+}
+
+class Products with ChangeNotifier {
+  List<Product> _items = [
+    Product(
+      id: 'p1',
+      title: 'Red Shirt',
+      imageUrl:
+          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+    ),
+    Product(
+      id: 'p2',
+      title: 'Trousers',
+      imageUrl:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
+    ),
+    Product(
+      id: 'p3',
+      title: 'Yellow Scarf',
+      imageUrl:
+          'https://live.staticflickr.com/4043/4438260868_cc79b3369d_z.jpg',
+    ),
+    Product(
+      id: 'p4',
+      title: 'A Pan',
+      imageUrl:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
+    ),
+  ];
 }

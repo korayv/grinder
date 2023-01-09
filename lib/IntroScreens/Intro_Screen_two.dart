@@ -7,17 +7,10 @@ import 'Intro_screen_one.dart';
 class IntroScreenTwo extends StatelessWidget {
   const IntroScreenTwo({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       backgroundColor: Colors.grey[50],
@@ -27,14 +20,11 @@ class IntroScreenTwo extends StatelessWidget {
             children: [
               // big logo
               Padding(
-
-                padding: const EdgeInsets.only(
-                  bottom: 2,
-                ),
+                padding: const EdgeInsets.only(bottom: 30),
                 child: SizedBox(
-                  height: 450,
+                  height: width,
                   width: double.infinity,
-                  child: Image.asset('lib/images/b.jpg'),
+                  child: Image.asset('lib/images/b.jpg', fit: BoxFit.fill),
                 ),
               ),
 
@@ -55,32 +45,31 @@ class IntroScreenTwo extends StatelessWidget {
               Text(
                 'Fashion of you will fascinate collectors.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.deepOrange,
-                ),
+                style: GoogleFonts.arimo(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFFD7650)),
               ),
 
               const SizedBox(height: 24),
 
-
               // get started button
               Container(
                 alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 23, bottom: 15),
+                padding: EdgeInsets.only(right: 30, top: 120),
                 child: GestureDetector(
-                  onTap: () =>
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return IntroScreenThree();
-                          },
-                        ),
-                      ),
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return IntroScreenThree();
+                      },
+                    ),
+                  ),
                   child: Container(
+                    alignment: Alignment.center,
                     width: 120,
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueAccent, width: 1),
                       borderRadius: BorderRadius.circular(8),
@@ -98,7 +87,6 @@ class IntroScreenTwo extends StatelessWidget {
                   ),
                 ),
               ),
-
             ],
           ),
         ),
