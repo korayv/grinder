@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sa/MainScreen/Main_screen.dart';
 import 'package:screenshot/screenshot.dart';
 import '../components/choose_image.dart';
 import '../components/snackbar.dart';
@@ -20,6 +21,22 @@ class RemoveBackroundScreen extends StatelessWidget {
       home: Scaffold(
           backgroundColor: Colors.brown[400],
           appBar: AppBar(
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.white,
+                ),
+                onPressed: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return MainScreen();
+                    },
+                  ),
+                ),
+              )
+            ],
             backgroundColor: Colors.brown[900],
             elevation: 0,
             title: const Text('Remove Background',
