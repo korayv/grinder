@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sa/MainScreen/Main_screen.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 
 class CreateScreen extends StatefulWidget {
@@ -12,7 +13,19 @@ class CreateScreen extends StatefulWidget {
 class _CreateScreenState extends State<CreateScreen> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(65.0),
+        child: AppBar(
+          title: Row(
+            children: [
+              Image.asset('assets/Untitled-1.png', height: 50,fit: BoxFit.contain,)
+            ],
+          ),
+        ),
+      ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           onPressed: () =>
@@ -20,7 +33,7 @@ class _CreateScreenState extends State<CreateScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return CreateScreen();
+                    return MainScreen();
                   },
                 ),
               ),
@@ -36,17 +49,36 @@ class _CreateScreenState extends State<CreateScreen> {
               BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 currentIndex: 0,
-                onTap: (int index) {},
                 items: [
                   BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.home,
+                      icon: IconButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return MainScreen();
+                              },
+                            ),
+                          );
+                        },
+                        icon: Icon(Icons.home),
                         color: Colors.blueGrey,
                       ),
-                      label: 'Home'),
+                      label: 'Home'
+                  ),
+
                   BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.person,
+                      icon: IconButton(
+                        onPressed: (){
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                              const ProfileScreen(),
+                            ),
+                          );
+                        },
+                        icon: Icon(Icons.person),
                         color: Colors.blueGrey,
                       ),
                       label: 'Profile'),
@@ -57,22 +89,21 @@ class _CreateScreenState extends State<CreateScreen> {
         ),
         body: Stack(
           children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: Text(
-                    "Start creating",
-                    style: GoogleFonts.arimo(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+            SafeArea(
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: Container(
+                      width: 360,
+                        child: Image.asset('assets/sticker.jpg')
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             GridView(
-                padding: EdgeInsets.only(top: 80, left: 30, right: 30),
+                padding: EdgeInsets.only(top: 475, left: 30, right: 30),
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 230,
                   childAspectRatio: 3 / 2,
@@ -89,11 +120,11 @@ class _CreateScreenState extends State<CreateScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.camera),
+                          icon: const Icon(Icons.sticky_note_2),
                           onPressed: () {},
                         ),
                         Text(
-                          "Open Camera",
+                          "Add Sticker",
                           textAlign: TextAlign.center,
                         )
                       ],
@@ -125,42 +156,6 @@ class _CreateScreenState extends State<CreateScreen> {
                           )
                         ],
                       )),
-                  Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(166, 191, 197, 1),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.bolt),
-                            onPressed: () {},
-                          ),
-                          Text(
-                            "Open Directory",
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      )),
-                  Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(166, 191, 197, 1),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.bolt),
-                            onPressed: () {},
-                          ),
-                          Text(
-                            "Open Directory",
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ))
                 ]),
           ],
         ));
