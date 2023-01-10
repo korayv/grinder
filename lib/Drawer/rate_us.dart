@@ -23,28 +23,28 @@ class RateUs extends StatelessWidget {
                 child: SizedBox(
                   height: width,
                   width: double.infinity,
-                  child: Image.asset('lib/images/rateus.jpg'),
+                  child: Image.asset('lib/images/rate.gif'),
                 ),
               ),
 
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Text(
-                  'Your feedback on our app is very important to us, please do not forget to share your thoughts with us on Google Play and Apple Store! Please rate us to support us.',
+                  'Your feedback on our app is very important to us, please do not forget to share your thoughts with us on Google Play and Apple Store! 👍\f Please rate us to support us..! 😊',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.arimo(
-                      fontSize: 32,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF247BA0)),
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 10),
 
               // get started button
               Container(
                 alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 30, top: 120),
+                padding: EdgeInsets.only(right: 30, top: 50),
                 child: GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
@@ -75,6 +75,7 @@ class RateUs extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 30),
             ],
           ),
         ),

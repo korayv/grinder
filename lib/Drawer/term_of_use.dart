@@ -58,12 +58,12 @@ class TermOfUse extends StatelessWidget {
                     color: Color(0xFFFD7650)),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 5),
 
               // get started button
               Container(
                 alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 30, top: 120),
+                padding: EdgeInsets.only(right: 30, top: 90),
                 child: GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,
@@ -94,6 +94,7 @@ class TermOfUse extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 30),
             ],
           ),
         ),
