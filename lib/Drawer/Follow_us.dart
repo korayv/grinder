@@ -172,7 +172,7 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/Untitled-1.png'),
+        backgroundColor: Colors.lime,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios_new,
