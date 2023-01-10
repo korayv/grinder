@@ -6,6 +6,9 @@ import 'package:sa/Drawer/term_of_use.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../Drawer/Follow_us.dart';
+
+
 final Uri _url = Uri.parse('https://foundation.app/@philipglass/BM-ICONS/1');
 final Uri _url2 = Uri.parse('https://foundation.app/@Timpers/foundation/28521');
 final Uri _url3 = Uri.parse('https://foundation.app/@GHARLIERA/genesis-74ef/1');
@@ -113,7 +116,32 @@ class _MyAppState extends State<MainScreen> {
                                     title: Text("Follow Us"),
                                     leading: Icon(Icons.thumb_up_alt_outlined),
                                     onTap: () {
-                                      //action when this menu is pressed
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return ContactUs(
+                                              cardColor: Colors.white,
+                                              companyColor: Colors.lime,
+                                              companyName: 'GriNder',
+                                              email: 'grinder@gmail.com',
+                                              taglineColor: Colors.lime,
+                                              textColor: Colors.lime,
+                                              logo: AssetImage('lib/images/download.jpg'),
+                                              website: 'griNder.com',
+                                              avatarRadius: 100,
+                                              companyFontWeight: FontWeight.bold,
+                                              instagram: 'griNder',
+                                              facebookHandle: 'grinder',
+                                              linkedinURL: 'grinder',
+                                              phoneNumber: '0555 555 55 55',
+                                              dividerColor: Colors.brown,
+                                              companyFontSize: 50,
+                                              twitterHandle: 'GriNder',
+                                            );
+                                          },
+                                        ),
+                                      );
                                     },
                                   ),
                                   ListTile(

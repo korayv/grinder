@@ -39,15 +39,6 @@ class RateUs extends StatelessWidget {
                 ),
               ),
 
-              Text(
-                'You are precious to us..!',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.arimo(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFFD7650)),
-              ),
-
               const SizedBox(height: 30),
 
               // get started button
