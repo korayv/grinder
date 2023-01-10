@@ -23,7 +23,7 @@ class RateUs extends StatelessWidget {
                 child: SizedBox(
                   height: width,
                   width: double.infinity,
-                  child: Image.asset('lib/images/rate_us.jpeg'),
+                  child: Image.asset('lib/images/rateus.jpg'),
                 ),
               ),
 
@@ -37,15 +37,6 @@ class RateUs extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF247BA0)),
                 ),
-              ),
-
-              Text(
-                'Generate 1000+ NFTs in seconds without code',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.arimo(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFFD7650)),
               ),
 
               const SizedBox(height: 30),
