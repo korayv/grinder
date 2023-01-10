@@ -18,7 +18,7 @@ class PravicyPolicy extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 2,
+                  bottom: 0.2,
                 ),
                 child: SizedBox(
                   height: width,
@@ -28,7 +28,7 @@ class PravicyPolicy extends StatelessWidget {
               ),
 
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   'Privacy Policy of Grinder Company'
                   'Grinder Company operates the Grinder App , which provides the SERVICE.'
