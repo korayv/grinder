@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
+import 'package:sa/Drawer/privacy_policy.dart';
 import 'package:sa/Drawer/rate_us.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -85,9 +86,12 @@ class _MyAppState extends State<MainScreen> {
                                     dense: true,
                                     title: Text("Privacy Policy"),
                                     leading: Icon(Icons.privacy_tip_outlined),
-                                    onTap: () {
-                                      //action when this menu is pressed
-                                    },
+                                    onTap: () => Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                PravicyPolicy()),
+                                        (r) => false),
                                   ),
                                   ListTile(
                                     dense: true,
