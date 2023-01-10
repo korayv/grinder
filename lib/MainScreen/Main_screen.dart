@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
 import 'package:sa/Drawer/privacy_policy.dart';
 import 'package:sa/Drawer/rate_us.dart';
+import 'package:sa/Drawer/term_of_use.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -100,7 +101,11 @@ class _MyAppState extends State<MainScreen> {
                                     title: Text("Terms of Use"),
                                     leading: Icon(Icons.article_outlined),
                                     onTap: () {
-                                      //action when this menu is pressed
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => TermOfUse(),
+                                        ),
+                                      );
                                     },
                                   ),
                                   ListTile(
