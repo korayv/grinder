@@ -5,9 +5,11 @@ import 'package:sa/Drawer/rate_us.dart';
 import 'package:sa/Drawer/term_of_use.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../imageEdit/editScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../Drawer/Follow_us.dart';
-
 
 final Uri _url = Uri.parse('https://foundation.app/@philipglass/BM-ICONS/1');
 final Uri _url2 = Uri.parse('https://foundation.app/@Timpers/foundation/28521');
@@ -47,6 +49,20 @@ Future<void> _launchUrl3() async {
 }
 
 class _MyAppState extends State<MainScreen> {
+  @override
+  Uint8List? imageData;
+
+  @override
+  void initState() {
+    super.initState();
+    loadAsset("assets/nft2.jpg");
+  }
+
+  void loadAsset(String name) async {
+    var data = await rootBundle.load('assets/$name');
+    setState(() => imageData = data.buffer.asUint8List());
+  }
+
   final List<Map> myProducts =
       List.generate(4, (index) => {"id": index, "name": "Product $index"})
           .toList();
@@ -127,10 +143,12 @@ class _MyAppState extends State<MainScreen> {
                                               email: 'grinder@gmail.com',
                                               taglineColor: Colors.lime,
                                               textColor: Colors.lime,
-                                              logo: AssetImage('lib/images/download.jpg'),
+                                              logo: AssetImage(
+                                                  'lib/images/download.jpg'),
                                               website: 'griNder.com',
                                               avatarRadius: 100,
-                                              companyFontWeight: FontWeight.bold,
+                                              companyFontWeight:
+                                                  FontWeight.bold,
                                               instagram: 'griNder',
                                               facebookHandle: 'grinder',
                                               linkedinURL: 'grinder',
@@ -269,19 +287,53 @@ class _MyAppState extends State<MainScreen> {
                           Padding(
                             padding: const EdgeInsets.all(5),
                             child: GestureDetector(
-                              onTap: () {
-                                print("sticker");
+                              onTap: () async {
+                                var editedImage = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ImageEditor(
+                                      images: [
+                                        imageData,
+                                        imageData,
+                                      ],
+                                      allowMultiple: true,
+                                      allowCamera: true,
+                                      allowGallery: true,
+                                    ),
+                                  ),
+                                );
+
+                                // replace with edited image
+                                if (editedImage != null) {
+                                  imageData = editedImage;
+                                  setState(() {});
+                                }
                               },
                               child: Stack(
                                 alignment: Alignment.bottomLeft,
                                 children: [
                                   GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).push(
+                                    onTap: () async {
+                                      var editedImage = await Navigator.push(
+                                        context,
                                         MaterialPageRoute(
-                                          builder: (context) => CreateScreen(),
+                                          builder: (context) => ImageEditor(
+                                            images: [
+                                              imageData,
+                                              imageData,
+                                            ],
+                                            allowMultiple: true,
+                                            allowCamera: true,
+                                            allowGallery: true,
+                                          ),
                                         ),
                                       );
+
+                                      // replace with edited image
+                                      if (editedImage != null) {
+                                        imageData = editedImage;
+                                        setState(() {});
+                                      }
                                     },
                                     child: Container(
                                       foregroundDecoration: const BoxDecoration(
