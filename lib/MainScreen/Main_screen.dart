@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
 import 'package:sa/Drawer/privacy_policy.dart';
 import 'package:sa/Drawer/rate_us.dart';
 import 'package:sa/Drawer/term_of_use.dart';
+import 'package:sa/MainScreen/about_us.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../imageEdit/editScreen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../Drawer/Follow_us.dart';
+import '../imageEdit/editScreen.dart';
 
 final Uri _url = Uri.parse('https://foundation.app/@philipglass/BM-ICONS/1');
 final Uri _url2 = Uri.parse('https://foundation.app/@Timpers/foundation/28521');
@@ -795,7 +795,7 @@ class _MyAppState extends State<MainScreen> {
                                                   Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          const NFTScreen(),
+                                                          const AboutUs(),
                                                     ),
                                                   );
                                                 },
