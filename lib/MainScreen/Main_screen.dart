@@ -86,105 +86,111 @@ class _MyAppState extends State<MainScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return Drawer(
-                              child: SafeArea(
-                                  child: Column(
-                                children: [
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Rate Us"),
-                                    leading: Icon(Icons.star_border_outlined),
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => RateUs(),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Privacy Policy"),
-                                    leading: Icon(Icons.privacy_tip_outlined),
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => PravicyPolicy(),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Terms of Use"),
-                                    leading: Icon(Icons.article_outlined),
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => TermOfUse(),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Follow Us"),
-                                    leading: Icon(Icons.thumb_up_alt_outlined),
-                                    onTap: () {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return ContactUs(
-                                              cardColor: Colors.white,
-                                              companyColor: Colors.lime,
-                                              companyName: 'GriNder',
-                                              email: 'grinder@gmail.com',
-                                              taglineColor: Colors.lime,
-                                              textColor: Colors.lime,
-                                              logo: AssetImage(
-                                                  'lib/images/download.jpg'),
-                                              website: 'griNder.com',
-                                              avatarRadius: 100,
-                                              companyFontWeight:
-                                                  FontWeight.bold,
-                                              instagram: 'griNder',
-                                              facebookHandle: 'grinder',
-                                              linkedinURL: 'grinder',
-                                              phoneNumber: '0555 555 55 55',
-                                              dividerColor: Colors.brown,
-                                              companyFontSize: 50,
-                                              twitterHandle: 'GriNder',
-                                            );
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Go Back"),
-                                    leading:
-                                        Icon(Icons.arrow_back_ios_outlined),
-                                    onTap: () => Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return MainScreen();
-                                        },
-                                      ),
+                  onPressed: () => {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Drawer(
+                                child: SafeArea(
+                                    child: Column(
+                                  children: [
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Rate Us"),
+                                      leading: Icon(Icons.star_border_outlined),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => RateUs(),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  ),
-                                ],
-                              )),
-                            );
-                          },
-                        ),
-                      ),
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Privacy Policy"),
+                                      leading: Icon(Icons.privacy_tip_outlined),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                PravicyPolicy(),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Terms of Use"),
+                                      leading: Icon(Icons.article_outlined),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => TermOfUse(),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Follow Us"),
+                                      leading:
+                                          Icon(Icons.thumb_up_alt_outlined),
+                                      onTap: () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return ContactUs(
+                                                cardColor: Colors.white,
+                                                companyColor: Colors.lime,
+                                                companyName: 'GriNder',
+                                                email: 'grinder@gmail.com',
+                                                taglineColor: Colors.lime,
+                                                textColor: Colors.lime,
+                                                logo: AssetImage(
+                                                    'lib/images/download.jpg'),
+                                                website: 'griNder.com',
+                                                avatarRadius: 100,
+                                                companyFontWeight:
+                                                    FontWeight.bold,
+                                                instagram: 'griNder',
+                                                facebookHandle: 'grinder',
+                                                linkedinURL: 'grinder',
+                                                phoneNumber: '0555 555 55 55',
+                                                dividerColor: Colors.brown,
+                                                companyFontSize: 50,
+                                                twitterHandle: 'GriNder',
+                                              );
+                                            },
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Go Back"),
+                                      leading:
+                                          Icon(Icons.arrow_back_ios_outlined),
+                                      onTap: () => {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return MainScreen();
+                                            },
+                                          ),
+                                        )
+                                      },
+                                    ),
+                                  ],
+                                )),
+                              );
+                            },
+                          ),
+                        )
+                      },
                   icon: const Icon(
                     Icons.menu,
                     color: Colors.black,
@@ -200,63 +206,67 @@ class _MyAppState extends State<MainScreen> {
                 ),
               ),
               IconButton(
-                  onPressed: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return Drawer(
-                              child: SafeArea(
-                                  child: Column(
-                                children: [
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Home Page"),
-                                    leading: Icon(Icons.home),
-                                    onTap: () {
-                                      //action when this menu is pressed
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("My Profile"),
-                                    leading: Icon(Icons.person),
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const ProfileScreen(),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Get Premium"),
-                                    leading: Icon(Icons.workspace_premium),
-                                    onTap: () {
-                                      //action when this menu is pressed
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Go Back"),
-                                    leading:
-                                        Icon(Icons.arrow_back_ios_outlined),
-                                    onTap: () => Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return MainScreen();
-                                        },
-                                      ),
+                  onPressed: () => {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Drawer(
+                                child: SafeArea(
+                                    child: Column(
+                                  children: [
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Home Page"),
+                                      leading: Icon(Icons.home),
+                                      onTap: () {
+                                        //action when this menu is pressed
+                                      },
                                     ),
-                                  ),
-                                ],
-                              )),
-                            );
-                          },
-                        ),
-                      ),
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("My Profile"),
+                                      leading: Icon(Icons.person),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ProfileScreen(),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Get Premium"),
+                                      leading: Icon(Icons.workspace_premium),
+                                      onTap: () {
+                                        //action when this menu is pressed
+                                      },
+                                    ),
+                                    ListTile(
+                                      dense: true,
+                                      title: Text("Go Back"),
+                                      leading:
+                                          Icon(Icons.arrow_back_ios_outlined),
+                                      onTap: () => {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return MainScreen();
+                                            },
+                                          ),
+                                        )
+                                      },
+                                    ),
+                                  ],
+                                )),
+                              );
+                            },
+                          ),
+                        )
+                      },
                   icon: Icon(
                     Icons.workspace_premium_outlined,
                     color: Colors.black,
@@ -370,14 +380,16 @@ class _MyAppState extends State<MainScreen> {
                           Padding(
                             padding: const EdgeInsets.all(5),
                             child: GestureDetector(
-                              onTap: () => Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return RemoveBackroundScreen();
-                                  },
-                                ),
-                              ),
+                              onTap: () => {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return RemoveBackroundScreen();
+                                    },
+                                  ),
+                                )
+                              },
                               child: Stack(
                                 alignment: Alignment.bottomLeft,
                                 children: [
@@ -827,14 +839,16 @@ class _MyAppState extends State<MainScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CreateScreen();
-            },
-          ),
-        ),
+        onPressed: () => {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return CreateScreen();
+              },
+            ),
+          )
+        },
         child: Icon(Icons.add),
         elevation: 2.0,
       ),
@@ -868,45 +882,4 @@ class _MyAppState extends State<MainScreen> {
       ),
     );
   }
-}
-
-class Product with ChangeNotifier {
-  final String id;
-  final String title;
-  final String imageUrl;
-
-  Product({
-    required this.id,
-    required this.title,
-    required this.imageUrl,
-  });
-}
-
-class Products with ChangeNotifier {
-  List<Product> _items = [
-    Product(
-      id: 'p1',
-      title: 'Red Shirt',
-      imageUrl:
-          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
-    ),
-    Product(
-      id: 'p2',
-      title: 'Trousers',
-      imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
-    ),
-    Product(
-      id: 'p3',
-      title: 'Yellow Scarf',
-      imageUrl:
-          'https://live.staticflickr.com/4043/4438260868_cc79b3369d_z.jpg',
-    ),
-    Product(
-      id: 'p4',
-      title: 'A Pan',
-      imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
-    ),
-  ];
 }

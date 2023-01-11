@@ -1,5 +1,8 @@
 library image_editor_plus;
 
+import 'package:gallery_saver/gallery_saver.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:cross_file_image/cross_file_image.dart';
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
@@ -13,6 +16,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hand_signature/signature.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_editor/image_editor.dart' as image_editor;
+import '../imageEdit/image_main.dart';
+import 'package:sa/imageEdit/image_main.dart';
 import '../imageEdit/data/image_item.dart';
 import '../imageEdit/data/layer.dart';
 import '../imageEdit/layers/background_blur_layer.dart';
@@ -25,15 +30,79 @@ import '../imageEdit/modules/text.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
-import 'package:sa/MainScreen/Main_screen.dart';
+
+import '../components/snackbar.dart';
+
+import 'modules/colors_picker.dart';
+import 'dart:typed_data';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
-import '../components/choose_image.dart';
-import '../components/snackbar.dart';
-import '../controllers/remove_bg_controller.dart';
-import 'modules/colors_picker.dart';
+class SaveController extends GetxController {
+  Uint8List? imageFile;
+  String? imagePath;
+  ScreenshotController controller2 = ScreenshotController();
+  var isLoading = false.obs;
+
+  Future<Uint8List> removeBg(String imagePath) async {
+    isLoading = true.obs;
+    update();
+    var request = http.MultipartRequest(
+        "POST", Uri.parse("https://api.remove.bg/v1.0/removebg"));
+    request.files
+        .add(await http.MultipartFile.fromPath("image_file", imagePath));
+    request.headers.addAll({"X-API-Key": "EVFFufMvYFjAHSgUDuVXqHQQ"});
+    final response = await request.send();
+    if (response.statusCode == 200) {
+      http.Response imgRes = await http.Response.fromStream(response);
+      isLoading = false.obs;
+      update();
+      return imgRes.bodyBytes;
+    } else {
+      throw Exception("Error");
+    }
+  }
+
+  void pickImage(ImageSource source) async {
+    try {
+      final pickedImage = await ImagePicker().pickImage(source: source);
+      if (pickedImage != null) {
+        imagePath = pickedImage.path;
+        imageFile = await pickedImage.readAsBytes();
+        update();
+      }
+    } catch (e) {
+      imageFile = null;
+      update();
+    }
+  }
+
+  void cleanUp() {
+    imageFile = null;
+    update();
+  }
+
+  void saveImage() async {
+    bool isGranted = await Permission.storage.status.isGranted;
+    if (!isGranted) {
+      isGranted = await Permission.storage.request().isGranted;
+    }
+    if (isGranted) {
+      String directory = (await getExternalStorageDirectory())!.path;
+      String fileName = "${DateTime.now().microsecondsSinceEpoch}.png";
+      controller2.capture().then((Uint8List? image) {
+        ImageGallerySaver.saveImage(image!, quality: 60, name: "hello");
+      });
+    }
+  }
+}
 
 late Size viewportSize;
 double viewportRatio = 1;
@@ -72,7 +141,7 @@ class ImageEditor extends StatelessWidget {
           'No image to work with, provide an image or allow the image picker.');
     }
 
-    if ((image == null || images != null) && allowMultiple == true) {
+    if ((image == null || images != null) && allowMultiple == false) {
       return MultiImageEditor(
         images: images ?? [],
         savePath: savePath,
@@ -154,7 +223,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
   @override
   Widget build(BuildContext context) {
     viewportSize = MediaQuery.of(context).size;
-
+    //Image(image: XFileImage(images));
     return Theme(
       data: ImageEditor.theme,
       child: Scaffold(
@@ -193,11 +262,11 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
           ],
         ),
         body: Center(
-          child: GetBuilder<RemoveBgController>(
-              init: RemoveBgController(),
+          child: GetBuilder<SaveController>(
+              init: SaveController(),
               builder: (controller) {
                 return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  //mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     (controller.imageFile != null)
                         ? SafeArea(
@@ -208,7 +277,7 @@ class _MultiImageEditorState extends State<MultiImageEditor> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 16),
                                     child: Screenshot(
-                                      controller: controller.controller,
+                                      controller: controller.controller2,
                                       child: Image.memory(
                                         height: 300,
                                         controller.imageFile!,
@@ -403,11 +472,10 @@ class SingleImageEditor extends StatefulWidget {
 
 class _SingleImageEditorState extends State<SingleImageEditor> {
   ImageItem currentImage = ImageItem();
-
   Offset offset1 = Offset.zero;
   Offset offset2 = Offset.zero;
   final scaf = GlobalKey<ScaffoldState>();
-
+  XFile? file;
   final GlobalKey container = GlobalKey();
   final GlobalKey globalKey = GlobalKey();
   ScreenshotController screenshotController = ScreenshotController();
