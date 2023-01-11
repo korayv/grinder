@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AboutUs extends StatefulWidget {
-  const AboutUs({Key? key}) : super(key: key);
+class OpenWalletScreen extends StatefulWidget {
+  const OpenWalletScreen({Key? key}) : super(key: key);
 
   @override
-  State<AboutUs> createState() => _AboutUsState();
+  State<OpenWalletScreen> createState() => _OpenWalletScreenState();
 }
 
-class _AboutUsState extends State<AboutUs> {
+class _OpenWalletScreenState extends State<OpenWalletScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,11 +15,13 @@ class _AboutUsState extends State<AboutUs> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('lib/images/aboutus.jpeg'),
+              Image.network(
+                "https://www.finahukuk.com/en/wp-content/uploads/2022/01/digital-wallet.jpg",
+              ),
               const Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
-                  "About Us",
+                  "Open A Wallet",
                   style: TextStyle(
                       color: Colors.blue,
                       fontSize: 24,

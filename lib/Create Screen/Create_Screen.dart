@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
+import 'package:sa/MainScreen/profile_screen.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 
 class CreateScreen extends StatefulWidget {
@@ -16,27 +16,30 @@ class _CreateScreenState extends State<CreateScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(65.0),
-        child: AppBar(
-          title: Row(
-            children: [
-              Image.asset('assets/Untitled-1.png', height: 50,fit: BoxFit.contain,)
-            ],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(65.0),
+          child: AppBar(
+            title: Row(
+              children: [
+                Image.asset(
+                  'assets/Untitled-1.png',
+                  height: 50,
+                  fit: BoxFit.contain,
+                )
+              ],
+            ),
           ),
         ),
-      ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: () =>
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return MainScreen();
-                  },
-                ),
-              ),
+          onPressed: () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return MainScreen();
+              },
+            ),
+          ),
           child: Icon(Icons.close_rounded),
           elevation: 2.0,
         ),
@@ -65,16 +68,13 @@ class _CreateScreenState extends State<CreateScreen> {
                         icon: Icon(Icons.home),
                         color: Colors.blueGrey,
                       ),
-                      label: 'Home'
-                  ),
-
+                      label: 'Home'),
                   BottomNavigationBarItem(
                       icon: IconButton(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) =>
-                              const ProfileScreen(),
+                              builder: (context) => const ProfileScreen(),
                             ),
                           );
                         },
@@ -95,9 +95,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   Padding(
                     padding: const EdgeInsets.all(25.0),
                     child: Container(
-                      width: 360,
-                        child: Image.asset('assets/sticker.jpg')
-                    ),
+                        width: 360, child: Image.asset('assets/sticker.jpg')),
                   ),
                 ],
               ),
@@ -140,15 +138,14 @@ class _CreateScreenState extends State<CreateScreen> {
                         children: [
                           IconButton(
                             icon: Icon(Icons.photo_library),
-                            onPressed: () =>
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return RemoveBackroundScreen();
-                                    },
-                                  ),
-                                ),
+                            onPressed: () => Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return RemoveBackroundScreen();
+                                },
+                              ),
+                            ),
                           ),
                           Text(
                             "Open Directory",
