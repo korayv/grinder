@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../MainScreen/Drawer_Screen.dart';
 import '../MainScreen/Main_screen.dart';
 
 ///Class for adding contact details/profile details as a complete new page in your flutter app.
@@ -182,7 +183,7 @@ class ContactUs extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return MainScreen();
+                return drawerScreen();
               },
             ),
           ),
