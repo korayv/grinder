@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
 import 'package:sa/Drawer/privacy_policy.dart';
 import 'package:sa/Drawer/rate_us.dart';
 import 'package:sa/Drawer/term_of_use.dart';
+import 'package:sa/MainScreen/NFTScreens.dart';
+import 'package:sa/MainScreen/about_us.dart';
+import 'package:sa/MainScreen/open_wallet.dart';
+import 'package:sa/MainScreen/profile_screen.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../imageEdit/editScreen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../Drawer/Follow_us.dart';
+import '../imageEdit/editScreen.dart';
 
 final Uri _url = Uri.parse('https://foundation.app/@philipglass/BM-ICONS/1');
 final Uri _url2 = Uri.parse('https://foundation.app/@Timpers/foundation/28521');
@@ -569,7 +572,7 @@ class _MyAppState extends State<MainScreen> {
                               onTap: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => const NFTScreen(),
+                                    builder: (context) => const AboutUs(),
                                   ),
                                 );
                               },
@@ -795,7 +798,7 @@ class _MyAppState extends State<MainScreen> {
                                                   Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          const NFTScreen(),
+                                                          const AboutUs(),
                                                     ),
                                                   );
                                                 },
@@ -859,333 +862,6 @@ class _MyAppState extends State<MainScreen> {
                     ),
                     label: 'Profile'),
               ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
-
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Profile',
-      home: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          elevation: 0,
-          title: Center(
-            child: const Text('Profile'),
-          ),
-        ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-              height: 250,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color.fromARGB(255, 37, 36, 36),
-                    Color.fromARGB(255, 3, 2, 2)
-                  ],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  stops: [0.5, 0.9],
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.white70,
-                        minRadius: 35.0,
-                        child: Icon(
-                          Icons.call,
-                          size: 30.0,
-                        ),
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.white70,
-                        minRadius: 60.0,
-                        child: CircleAvatar(
-                          radius: 50.0,
-                          backgroundImage: NetworkImage(
-                              'https://pbs.twimg.com/profile_images/1610330801970757632/DZakeY5__400x400.jpg'),
-                        ),
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.white70,
-                        minRadius: 35.0,
-                        child: Icon(
-                          Icons.message,
-                          size: 30.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Rıfat KURBAN',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    'Flutter Developer',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      color: Colors.white,
-                      fontSize: 22,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      color: Color.fromARGB(255, 52, 52, 52),
-                      child: ListTile(
-                        title: Text(
-                          'Jan 16, 23',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.white,
-                          ),
-                        ),
-                        subtitle: Text(
-                          'Since',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: Color.fromARGB(255, 22, 22, 22),
-                      child: ListTile(
-                        title: Text(
-                          '235',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.white,
-                          ),
-                        ),
-                        subtitle: Text(
-                          'NFT Created',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    title: Text(
-                      'Email',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 8, 70, 136),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(
-                      'rifat.kurban@agu.edu.tr',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  Divider(),
-                  ListTile(
-                    title: Text(
-                      'Avesis',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 8, 70, 136),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(
-                      'https://avesis.kayseri.edu.tr/rifatkurban',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  Divider(),
-                  ListTile(
-                    title: Text(
-                      'Linkedin',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 8, 70, 136),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Text(
-                      'https://www.linkedin.com/in/rifatkurban/?originalSubdomain=tr',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  Container(height: 150),
-                  FloatingActionButton(
-                    backgroundColor: Colors.black,
-                    onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MainScreen();
-                        },
-                      ),
-                    ),
-                    child: Icon(
-                      Icons.arrow_back_ios_new,
-                    ),
-                    elevation: 2.0,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class OpenWalletScreen extends StatefulWidget {
-  const OpenWalletScreen({Key? key}) : super(key: key);
-
-  @override
-  State<OpenWalletScreen> createState() => _OpenWalletScreenState();
-}
-
-class _OpenWalletScreenState extends State<OpenWalletScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.network(
-                "https://www.finahukuk.com/en/wp-content/uploads/2022/01/digital-wallet.jpg",
-              ),
-              const Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  "Open A Wallet",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  "A wallet in the context of blockchain technology refers to a digital or software application that is used to store, manage, and track the ownership of digital assets or cryptocurrencies. It is essentially a digital equivalent of a traditional physical wallet, but instead of storing physical currency, it stores digital currency, such as Bitcoin or Ethereum. Blockchain wallets are used to send and receive cryptocurrencies, as well as to view and manage one's balance. They typically have a unique address, which is a string of alphanumeric characters that is used to identify the wallet and to send and receive transactions. The address is similar to a bank account number or an email address, and it is used to send and receive payments.",
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text("OK, Great!"),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class NFTScreen extends StatefulWidget {
-  const NFTScreen({Key? key}) : super(key: key);
-
-  @override
-  State<NFTScreen> createState() => _NFTScreenState();
-}
-
-class _NFTScreenState extends State<NFTScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Image.network(
-              "https://listelist.com/wp-content/uploads/2022/10/nft.jpg",
-            ),
-            const Padding(
-              padding: EdgeInsets.all(10),
-              child: Text(
-                "What is NFT?",
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(10),
-              child: Text(
-                "NFT stands for non-fungible token. It is a type of digital asset that represents ownership of a unique item or asset. Non-fungible means that the asset is not interchangeable and has a unique value. This is in contrast to a fungible asset, which is interchangeable and has a value that is determined by the market. NFTs are created using blockchain technology and are stored on a decentralized ledger. This allows for the ownership of the asset to be easily verifiable and transferable. NFTs are often used to represent digital art, collectibles, and other unique items that can be bought and sold online. They have gained popularity in recent years due to the increasing demand for unique, digital assets and the ability to easily buy and sell them using blockchain technology.",
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("OK, Great!"),
-              ),
             ),
           ],
         ),

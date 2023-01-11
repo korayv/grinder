@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
 
+import '../MainScreen/Drawer_Screen.dart';
+
 class PravicyPolicy extends StatelessWidget {
   const PravicyPolicy({super.key});
 
@@ -69,7 +71,7 @@ class PravicyPolicy extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return MainScreen();
+                        return drawerScreen();
                       },
                     ),
                   ),
