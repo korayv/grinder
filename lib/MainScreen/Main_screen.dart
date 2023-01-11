@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
+import 'package:sa/Drawer/get_premium.dart';
 import 'package:sa/Drawer/privacy_policy.dart';
 import 'package:sa/Drawer/rate_us.dart';
 import 'package:sa/Drawer/term_of_use.dart';
@@ -234,7 +235,12 @@ class _MyAppState extends State<MainScreen> {
                                     title: Text("Get Premium"),
                                     leading: Icon(Icons.workspace_premium),
                                     onTap: () {
-                                      //action when this menu is pressed
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const GetPremium(),
+                                        ),
+                                      );
                                     },
                                   ),
                                   ListTile(
@@ -489,10 +495,8 @@ class _MyAppState extends State<MainScreen> {
                                             BorderRadius.circular(10)),
                                     height: 150,
                                     width: 150,
-                                    child: Image.network(
-                                      "https://www.cnet.com/a/img/resize/e547a2e4388fcc5ab560f821ac170a59b9fb0143/hub/2021/12/13/d319cda7-1ddd-4855-ac55-9dcd9ce0f6eb/unnamed.png?auto=webp&fit=crop&height=1200&width=1200",
-                                      fit: BoxFit.fill,
-                                    ),
+                                    child:
+                                        Image.asset('lib/images/premium.gif'),
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
@@ -529,23 +533,22 @@ class _MyAppState extends State<MainScreen> {
                                 alignment: Alignment.bottomLeft,
                                 children: [
                                   Container(
-                                    foregroundDecoration: BoxDecoration(
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Colors.white,
-                                            Colors.transparent,
-                                          ],
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          stops: [0, 0.5],
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    height: 150,
-                                    width: 150,
-                                    child: Image.network(
-                                        "https://img.freepik.com/free-vector/digital-wallet-abstract-concept-illustration_335657-3896.jpg?w=2000"),
-                                  ),
+                                      foregroundDecoration: BoxDecoration(
+                                          gradient: const LinearGradient(
+                                            colors: [
+                                              Colors.white,
+                                              Colors.transparent,
+                                            ],
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            stops: [0, 0.5],
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      height: 150,
+                                      width: 150,
+                                      child: Image.asset(
+                                          'lib/images/openwallet.gif')),
                                   Container(
                                     decoration: BoxDecoration(
                                         color: Colors.black.withOpacity(0.5),

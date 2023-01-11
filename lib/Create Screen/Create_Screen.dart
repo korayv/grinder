@@ -148,7 +148,7 @@ class _CreateScreenState extends State<CreateScreen> {
                             ),
                           ),
                           Text(
-                            "Open Directory",
+                            "Remove Background",
                             textAlign: TextAlign.center,
                           )
                         ],
