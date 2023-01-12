@@ -119,9 +119,14 @@ class _MyAppState extends State<MainScreen> {
                                     dense: true,
                                     title: Text("Home Page"),
                                     leading: Icon(Icons.home),
-                                    onTap: () {
-                                      //action when this menu is pressed
-                                    },
+                                    onTap: () => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return MainScreen();
+                                        },
+                                      ),
+                                    ),
                                   ),
                                   ListTile(
                                     dense: true,
