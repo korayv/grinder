@@ -80,22 +80,22 @@ class _MyAppState extends State<MainScreen> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
+          leading: IconButton(
+              onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return mainpage2();
+                      },
+                    ),
+                  ),
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              )),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                  onPressed: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return mainpage2();
-                          },
-                        ),
-                      ),
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  )),
               Flexible(
                 child: Card(
                   child: Image.asset(
