@@ -765,14 +765,31 @@ class _MyAppState extends State<MainScreen> {
               onTap: (value) => ProfileScreen(),
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home,
+                    icon: IconButton(
+                      icon: Icon(Icons.home),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MainScreen();
+                            },
+                          ),
+                        );
+                      },
                       color: Colors.blueGrey,
                     ),
                     label: 'Home'),
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.person,
+                    icon: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileScreen(),
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.person,),
                       color: Colors.blueGrey,
                     ),
                     label: 'Profile'),
