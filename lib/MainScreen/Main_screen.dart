@@ -508,7 +508,8 @@ class _MyAppState extends State<MainScreen> {
                                             BorderRadius.circular(10)),
                                     height: 150,
                                     width: 150,
-                                    child: Image.asset("assets/aboutus.jpg"),
+                                    child:
+                                        Image.asset("lib/images/about_us.gif"),
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
