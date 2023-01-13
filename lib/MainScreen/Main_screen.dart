@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sa/Create%20Screen/Create_Screen.dart';
-import 'package:sa/Drawer/Follow_us.dart';
-import 'package:sa/Drawer/privacy_policy.dart';
-import 'package:sa/Drawer/rate_us.dart';
-import 'package:sa/Drawer/term_of_use.dart';
 import 'package:sa/MainScreen/NFTScreens.dart';
 import 'package:sa/MainScreen/about_us.dart';
 import 'package:sa/MainScreen/open_wallet.dart';
 import 'package:sa/MainScreen/profile_screen.dart';
 import 'package:sa/signin.dart';
-import 'package:sa/signup.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../Drawer/get_premium.dart';
 import '../imageEdit/editScreen.dart';
 import 'main2.dart';
 
@@ -137,6 +134,19 @@ class _MyAppState extends State<MainScreen> {
                                       _launchUrl6();
                                     },
                                   ),
+                                  ListTile(
+                                    dense: true,
+                                    title: Text("Get Premium"),
+                                    leading: Icon(Icons.flash_on),
+                                    onTap: () => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return GetPremium();
+                                        },
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               )),
                             );
@@ -146,7 +156,7 @@ class _MyAppState extends State<MainScreen> {
                   icon: Icon(
                     Icons.light_outlined,
                     color: Colors.black,
-                  ))
+                  )),
             ],
           ),
         ),

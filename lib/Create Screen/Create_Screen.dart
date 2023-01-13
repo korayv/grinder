@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
 import 'package:sa/MainScreen/profile_screen.dart';
-import 'package:sa/views/remove_bg_screen.dart';
 import 'package:sa/signin.dart';
 import 'package:sa/signup.dart';
+import 'package:sa/views/remove_bg_screen.dart';
 
 class CreateScreen extends StatefulWidget {
   const CreateScreen({super.key});
@@ -35,7 +34,7 @@ class _CreateScreenState extends State<CreateScreen> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pop(
+          onPressed: () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) {
