@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sa/Create%20Screen/Create_Screen.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
 import 'package:screenshot/screenshot.dart';
 
@@ -32,7 +33,7 @@ class RemoveBackroundScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return MainScreen();
+                      return CreateScreen();
                     },
                   ),
                 ),

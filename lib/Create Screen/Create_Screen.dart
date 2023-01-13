@@ -1,9 +1,13 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
 import 'package:sa/MainScreen/profile_screen.dart';
 import 'package:sa/signin.dart';
 import 'package:sa/signup.dart';
 import 'package:sa/views/remove_bg_screen.dart';
+
+import '../imageEdit/editScreen.dart';
 
 class CreateScreen extends StatefulWidget {
   const CreateScreen({super.key});
@@ -13,6 +17,8 @@ class CreateScreen extends StatefulWidget {
 }
 
 class _CreateScreenState extends State<CreateScreen> {
+  @override
+  Uint8List? imageData;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -131,7 +137,28 @@ class _CreateScreenState extends State<CreateScreen> {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.sticky_note_2),
-                          onPressed: () {},
+                          onPressed: () async {
+                            var editedImage = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ImageEditor(
+                                  images: [
+                                    imageData,
+                                    imageData,
+                                  ],
+                                  allowMultiple: true,
+                                  allowCamera: true,
+                                  allowGallery: true,
+                                ),
+                              ),
+                            );
+
+                            // replace with edited image
+                            if (editedImage != null) {
+                              imageData = editedImage;
+                              setState(() {});
+                            }
+                          },
                         ),
                         Text(
                           "Add Sticker",
