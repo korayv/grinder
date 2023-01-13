@@ -38,7 +38,7 @@ Widget bottomSheet(controller, context) {
                   ),
                   Text("Camera",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                 ],
               ),
             ),
@@ -61,7 +61,7 @@ Widget bottomSheet(controller, context) {
                 ),
                 Text("Gallery",
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               ],
             ),
           ),
