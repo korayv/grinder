@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sa/IntroScreens/Intro_Screen_two.dart';
+import 'package:sa/MainScreen/Main_screen.dart';
+import 'package:sa/main.dart';
 
 class IntroScreenOne extends StatelessWidget {
   const IntroScreenOne({super.key});
@@ -47,13 +49,43 @@ class IntroScreenOne extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFFD7650)),
               ),
-
-              const SizedBox(height: 30),
-
+              Container(
+                alignment: Alignment.bottomRight,
+                padding: EdgeInsets.only(right: 30, top: 30),
+                child: GestureDetector(
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MainScreen();
+                      },
+                    ),
+                  ),
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 120,
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent, width: 1),
+                      borderRadius: BorderRadius.circular(8),
+                      color: const Color.fromARGB(255, 248, 245, 245),
+                    ),
+                    child: const Text(
+                      textAlign: TextAlign.center,
+                      "Skip Intro",
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        // fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               // get started button
               Container(
                 alignment: Alignment.bottomRight,
-                padding: EdgeInsets.only(right: 30, top: 120),
+                padding: EdgeInsets.only(right: 30, top: 10),
                 child: GestureDetector(
                   onTap: () => Navigator.pushReplacement(
                     context,

@@ -129,7 +129,7 @@ class ContactUs extends StatelessWidget {
           elevation: 8.0,
           contentPadding: EdgeInsets.all(18.0),
           shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
           content: Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,27 +173,29 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lime,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.white,
-          ),
-          onPressed: () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return drawerScreen();
-              },
+          backgroundColor: Color.fromARGB(255, 23, 31, 42).withOpacity(0.5),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.white,
             ),
-          ),
-        )
-      ),
+            onPressed: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return drawerScreen();
+                },
+              ),
+            ),
+          )),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
               Visibility(
                 visible: logo != null,
                 child: CircleAvatar(
@@ -206,7 +208,7 @@ class ContactUs extends StatelessWidget {
               Text(
                 companyName,
                 style: TextStyle(
-                  fontFamily: companyFont ?? 'Pacifico',
+                  fontFamily: companyFont ?? 'Oswald',
                   fontSize: companyFontSize ?? 40.0,
                   color: companyColor,
                   fontWeight: companyFontWeight ?? FontWeight.bold,
@@ -330,7 +332,8 @@ class ContactUs extends StatelessWidget {
                         fontFamily: textFont,
                       ),
                     ),
-                    onTap: () => launch('https://twitter.com/' + twitterHandle!),
+                    onTap: () =>
+                        launch('https://twitter.com/' + twitterHandle!),
                   ),
                 ),
               ),
@@ -406,7 +409,8 @@ class ContactUs extends StatelessWidget {
                         fontFamily: textFont,
                       ),
                     ),
-                    onTap: () => launch('https://github.com/' + githubUserName!),
+                    onTap: () =>
+                        launch('https://github.com/' + githubUserName!),
                   ),
                 ),
               ),

@@ -23,6 +23,8 @@ final Uri _url3 = Uri.parse('https://foundation.app/@GHARLIERA/genesis-74ef/1');
 final Uri _url5 =
     Uri.parse('https://www.fotor.com/photo-editor-app/editor/sticker');
 
+final Uri _url6 = Uri.parse('https://geekflare.com/nft-tracking-tools/');
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -33,6 +35,12 @@ class MainScreen extends StatefulWidget {
 Future<void> _launchUrl5() async {
   if (!await launchUrl(_url5)) {
     throw 'Could not launch $_url5';
+  }
+}
+
+Future<void> _launchUrl6() async {
+  if (!await launchUrl(_url6)) {
+    throw 'Could not launch $_url6';
   }
 }
 
@@ -82,6 +90,7 @@ class _MyAppState extends State<MainScreen> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0), // here the desired height
         child: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
@@ -148,7 +157,7 @@ class _MyAppState extends State<MainScreen> {
                                               return ContactUs(
                                                 cardColor: Colors.white,
                                                 companyColor: Colors.lime,
-                                                companyName: 'GriNder',
+                                                companyName: 'griNder',
                                                 email: 'grinder@gmail.com',
                                                 taglineColor: Colors.lime,
                                                 textColor: Colors.lime,
@@ -209,64 +218,22 @@ class _MyAppState extends State<MainScreen> {
                 ),
               ),
               IconButton(
-                  onPressed: () => Navigator.pushReplacement(
+                  onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
                             return Drawer(
+                              backgroundColor: Colors.white,
                               child: SafeArea(
                                   child: Column(
                                 children: [
                                   ListTile(
                                     dense: true,
-                                    title: Text("Home Page"),
-                                    leading: Icon(Icons.home),
+                                    title: Text("Tips"),
+                                    leading: Icon(Icons.tips_and_updates),
                                     onTap: () {
-                                      //action when this menu is pressed
+                                      _launchUrl6();
                                     },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("My Profile"),
-                                    leading: Icon(Icons.person),
-                                    onTap: () {
-                                      if (loginStatus) {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const ProfileScreen(),
-                                          ),
-                                        );
-                                      } else {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) => LoginDemo(),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Get Premium"),
-                                    leading: Icon(Icons.workspace_premium),
-                                    onTap: () {
-                                      //action when this menu is pressed
-                                    },
-                                  ),
-                                  ListTile(
-                                    dense: true,
-                                    title: Text("Go Back"),
-                                    leading:
-                                        Icon(Icons.arrow_back_ios_outlined),
-                                    onTap: () => Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return MainScreen();
-                                        },
-                                      ),
-                                    ),
                                   ),
                                 ],
                               )),
@@ -275,7 +242,7 @@ class _MyAppState extends State<MainScreen> {
                         ),
                       ),
                   icon: Icon(
-                    Icons.workspace_premium_outlined,
+                    Icons.light_outlined,
                     color: Colors.black,
                   ))
             ],
@@ -847,6 +814,7 @@ class _MyAppState extends State<MainScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromARGB(255, 23, 31, 42),
         onPressed: () => {
           Navigator.pushReplacement(
             context,
@@ -867,20 +835,45 @@ class _MyAppState extends State<MainScreen> {
         child: Wrap(
           children: [
             BottomNavigationBar(
+              iconSize: 35,
               type: BottomNavigationBarType.fixed,
               currentIndex: 0,
-              onTap: (value) => ProfileScreen(),
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home,
-                      color: Colors.blueGrey,
+                    icon: IconButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MainScreen();
+                            },
+                          ),
+                        );
+                      },
+                      icon: Icon(Icons.home),
+                      color: Color.fromARGB(255, 23, 31, 42),
                     ),
                     label: 'Home'),
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.person,
-                      color: Colors.blueGrey,
+                    icon: IconButton(
+                      onPressed: () {
+                        if (loginStatus) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const ProfileScreen(),
+                            ),
+                          );
+                        } else {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => LoginDemo(),
+                            ),
+                          );
+                        }
+                      },
+                      icon: Icon(Icons.person),
+                      color: Color.fromARGB(255, 23, 31, 42),
                     ),
                     label: 'Profile'),
               ],

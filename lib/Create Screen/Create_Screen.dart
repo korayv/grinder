@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
 import 'package:sa/MainScreen/profile_screen.dart';
 import 'package:sa/views/remove_bg_screen.dart';
+import 'package:sa/signin.dart';
+import 'package:sa/signup.dart';
 
 class CreateScreen extends StatefulWidget {
   const CreateScreen({super.key});
@@ -19,20 +21,20 @@ class _CreateScreenState extends State<CreateScreen> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(65.0),
           child: AppBar(
-            title: Row(
-              children: [
-                Image.asset(
-                  'assets/Untitled-1.png',
-                  height: 50,
-                  fit: BoxFit.contain,
-                )
-              ],
+            backgroundColor: Colors.white,
+            elevation: 0,
+            title: Center(
+              child: Image.asset(
+                'assets/Untitled-1.png',
+                height: 50,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushReplacement(
+          onPressed: () => Navigator.pop(
             context,
             MaterialPageRoute(
               builder: (context) {
@@ -40,6 +42,7 @@ class _CreateScreenState extends State<CreateScreen> {
               },
             ),
           ),
+          backgroundColor: Color.fromARGB(255, 23, 31, 42),
           child: Icon(Icons.close_rounded),
           elevation: 2.0,
         ),
@@ -50,6 +53,7 @@ class _CreateScreenState extends State<CreateScreen> {
           child: Wrap(
             children: [
               BottomNavigationBar(
+                iconSize: 35,
                 type: BottomNavigationBarType.fixed,
                 currentIndex: 0,
                 items: [
@@ -66,20 +70,28 @@ class _CreateScreenState extends State<CreateScreen> {
                           );
                         },
                         icon: Icon(Icons.home),
-                        color: Colors.blueGrey,
+                        color: Color.fromARGB(255, 23, 31, 42),
                       ),
                       label: 'Home'),
                   BottomNavigationBarItem(
                       icon: IconButton(
                         onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const ProfileScreen(),
-                            ),
-                          );
+                          if (loginStatus) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const ProfileScreen(),
+                              ),
+                            );
+                          } else {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => SigninDemo(),
+                              ),
+                            );
+                          }
                         },
                         icon: Icon(Icons.person),
-                        color: Colors.blueGrey,
+                        color: Color.fromARGB(255, 23, 31, 42),
                       ),
                       label: 'Profile'),
                 ],

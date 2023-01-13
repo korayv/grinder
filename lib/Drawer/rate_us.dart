@@ -20,17 +20,16 @@ class RateUs extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                  bottom: 2,
+                  bottom: 20,
                 ),
                 child: SizedBox(
-                  height: width,
-                  width: double.infinity,
+                  width: height,
                   child: Image.asset('lib/images/rate.gif'),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.only(bottom: 30.0),
                 child: Text(
                   'Your feedback on our app is very important to us, please do not forget to share your thoughts with us on Google Play and Apple Store! 👍\f Please rate us to support us..! 😊',
                   textAlign: TextAlign.center,

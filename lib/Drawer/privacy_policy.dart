@@ -23,13 +23,13 @@ class PravicyPolicy extends StatelessWidget {
                   bottom: 0.2,
                 ),
                 child: SizedBox(
-                  height: width,
-                  width: double.infinity,
+                  height: 2 * width / 5,
+                  width: double.maxFinite,
                   child: Image.asset('lib/images/privacy.jpg'),
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.all(0),
+                padding: EdgeInsets.only(top: 20),
                 child: Text(
                   "Privacy Policy of Grinder Company ",
                   style: TextStyle(
