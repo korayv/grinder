@@ -14,8 +14,8 @@ import 'package:sa/signup.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../Drawer/Follow_us.dart';
 import '../imageEdit/editScreen.dart';
+import 'main2.dart';
 
 final Uri _url = Uri.parse('https://foundation.app/@philipglass/BM-ICONS/1');
 final Uri _url2 = Uri.parse('https://foundation.app/@Timpers/foundation/28521');
@@ -94,6 +94,19 @@ class _MyAppState extends State<MainScreen> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
+          leading: IconButton(
+              onPressed: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return mainpage2();
+                      },
+                    ),
+                  ),
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              )),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -581,7 +594,8 @@ class _MyAppState extends State<MainScreen> {
                                             BorderRadius.circular(10)),
                                     height: 150,
                                     width: 150,
-                                    child: Image.asset("assets/aboutus.jpg"),
+                                    child:
+                                        Image.asset("lib/images/about_us.gif"),
                                   ),
                                   Container(
                                     decoration: BoxDecoration(

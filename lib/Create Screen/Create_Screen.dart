@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
 import 'package:sa/MainScreen/profile_screen.dart';
@@ -160,7 +161,7 @@ class _CreateScreenState extends State<CreateScreen> {
                             ),
                           ),
                           Text(
-                            "Open Directory",
+                            "Remove Background",
                             textAlign: TextAlign.center,
                           )
                         ],
