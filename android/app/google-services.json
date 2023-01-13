@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "988985745708",
+    "project_id": "grinder-79d6e",
+    "storage_bucket": "grinder-79d6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988985745708:android:e5bce60dc3eed6da3acc89",
+        "android_client_info": {
+          "package_name": "com.example.sa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988985745708-8b6mrc0634e2fjvmflabskv7us3vuhik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHPuwTScmy3M-MFWpabtMY7iKbOVR9FWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988985745708-8b6mrc0634e2fjvmflabskv7us3vuhik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

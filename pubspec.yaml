@@ -59,6 +59,12 @@ dependencies:
   typicons_flutter: ^0.5.0
   cross_file_image: ^1.0.0
   gallery_saver: ^2.3.2
+  animated_theme_switcher: ^2.0.1-nullsafety.0
+  theme_provider: ^0.5.0
+  firebase_core: ^2.4.1
+  firebase_database: ^10.0.9
+  firebase_auth: ^4.2.5
+  stacked_firebase_auth: ^0.2.18
 
 dev_dependencies:
   flutter_test:

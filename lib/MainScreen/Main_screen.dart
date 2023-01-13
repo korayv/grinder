@@ -9,6 +9,8 @@ import 'package:sa/MainScreen/NFTScreens.dart';
 import 'package:sa/MainScreen/about_us.dart';
 import 'package:sa/MainScreen/open_wallet.dart';
 import 'package:sa/MainScreen/profile_screen.dart';
+import 'package:sa/signin.dart';
+import 'package:sa/signup.dart';
 import 'package:sa/views/remove_bg_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -228,12 +230,20 @@ class _MyAppState extends State<MainScreen> {
                                     title: Text("My Profile"),
                                     leading: Icon(Icons.person),
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const ProfileScreen(),
-                                        ),
-                                      );
+                                      if (loginStatus) {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ProfileScreen(),
+                                          ),
+                                        );
+                                      } else {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) => LoginDemo(),
+                                          ),
+                                        );
+                                      }
                                     },
                                   ),
                                   ListTile(

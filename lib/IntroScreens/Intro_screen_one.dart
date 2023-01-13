@@ -11,7 +11,7 @@ class IntroScreenOne extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      //backgroundColor: Colors.grey[50],
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(

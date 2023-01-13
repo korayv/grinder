@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sa/MainScreen/Main_screen.dart';
+import 'package:sa/signin.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -200,7 +201,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  Container(height: 150),
+                  Container(height: 20),
+                  ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                    onPressed: () {
+                      loginStatus = false;
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MainScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text('Log out'),
+                  ),
                   FloatingActionButton(
                     backgroundColor: Colors.black,
                     onPressed: () => Navigator.pushReplacement(
