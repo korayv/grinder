@@ -12,6 +12,8 @@ class SigninDemo extends StatefulWidget {
   _SigninDemoState createState() => _SigninDemoState();
 }
 
+bool valid = false;
+
 class _SigninDemoState extends State<SigninDemo> {
   static Future<User?> loginusingemailpassword(@required String email,
       @required String password, @required BuildContext context) async {
@@ -24,12 +26,85 @@ class _SigninDemoState extends State<SigninDemo> {
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
         print("No user found");
+        valid = false;
       }
     }
     return user;
   }
 
   final firebaseAuthenticationService = FirebaseAuthenticationService();
+
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("Main Page"),
+      onPressed: () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return MainScreen();
+          },
+        ),
+      ),
+    );
+    Widget continueButton = TextButton(
+      child: Text("Profile"),
+      onPressed: () => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return ProfileScreen();
+          },
+        ),
+      ),
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      //title: Text("AlertDialog"),
+      content: Text("signed up successfully"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  showAlertDialog2(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("Try Again"),
+      onPressed: () {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => SigninDemo()));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      //title: Text("My title"),
+      content: Text("failed"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +120,9 @@ class _SigninDemoState extends State<SigninDemo> {
           .createAccountWithEmail(
               email: _emailController.text, password: _passController.text);
       print('Result: ${result.user}');
+      if (result.user != null) {
+        valid = true;
+      }
     }
 
     // No longer throws
@@ -106,9 +184,14 @@ class _SigninDemoState extends State<SigninDemo> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 onPressed: () {
-                  loginStatus = true;
                   _createEmailAccount();
-                  print("done");
+                  if (valid) {
+                    loginStatus = true;
+                    print("done");
+                    showAlertDialog(context);
+                  } else {
+                    showAlertDialog2(context);
+                  }
                 },
                 child: Text(
                   'Sign Up',
