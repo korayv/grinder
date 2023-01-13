@@ -32,7 +32,7 @@ Widget bottomSheet(controller, context) {
               },
               child: Row(
                 children: const [
-                  Icon(Icons.camera, color: Colors.brown, size: 30),
+                  Icon(Icons.camera, color: Color(0xFF22335D), size: 30),
                   SizedBox(
                     width: 5,
                   ),
@@ -55,7 +55,7 @@ Widget bottomSheet(controller, context) {
             },
             child: Row(
               children: const [
-                Icon(Icons.image, color: Colors.brown, size: 30),
+                Icon(Icons.image, color: Color(0xFF22335D), size: 30),
                 SizedBox(
                   width: 5,
                 ),

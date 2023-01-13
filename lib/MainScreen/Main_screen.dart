@@ -244,7 +244,7 @@ class _MyAppState extends State<MainScreen> {
                                   const Padding(
                                     padding: EdgeInsets.all(5),
                                     child: Text(
-                                      "Sticker",
+                                      "Grind",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
