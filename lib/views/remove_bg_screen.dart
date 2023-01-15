@@ -36,12 +36,10 @@ class RemoveBackroundScreen extends StatelessWidget {
                     Icons.arrow_back_ios_new,
                     color: Colors.white,
                   ),
-                  onPressed: () => Navigator.pushReplacement(
+                  onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) {
-                        return MainScreen();
-                      },
+                      builder: (context) => MainScreen(),
                     ),
                   ),
                 )
